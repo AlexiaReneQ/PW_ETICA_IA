@@ -3,7 +3,6 @@ const navLinks = document.getElementById('navLinks');
 const themeBtn = document.getElementById('themeBtn');
 const progress = document.getElementById('progress');
 const topBtn = document.getElementById('topBtn');
-const copyRefs = document.getElementById('copyRefs');
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
 const modalClose = document.getElementById('modalClose');
@@ -13,13 +12,13 @@ document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click
 
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark');
-  themeBtn.textContent = '☀️';
+  themeBtn.textContent = 'â˜€ï¸';
 }
 
 themeBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   const dark = document.body.classList.contains('dark');
-  themeBtn.textContent = dark ? '☀️' : '🌙';
+  themeBtn.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
   localStorage.setItem('theme', dark ? 'dark' : 'light');
 });
 
@@ -65,22 +64,13 @@ document.querySelectorAll('.zoomable').forEach(img => {
     modal.setAttribute('aria-hidden', 'false');
   });
 });
+
 function closeModal() {
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   modalImg.src = '';
 }
+
 modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-copyRefs.addEventListener('click', async () => {
-  const text = document.getElementById('references').innerText.trim();
-  try {
-    await navigator.clipboard.writeText(text);
-    copyRefs.textContent = 'Referencias copiadas';
-    setTimeout(() => copyRefs.textContent = 'Copiar referencias', 1800);
-  } catch (err) {
-    alert('Selecciona las referencias y cópialas manualmente.');
-  }
-});
