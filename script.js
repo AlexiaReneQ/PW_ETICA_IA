@@ -12,13 +12,21 @@ document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click
 
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark');
+<<<<<<< HEAD
   themeBtn.textContent = '\u2600\uFE0F';
+=======
+  themeBtn.textContent = 'â˜€ï¸';
+>>>>>>> origin/main
 }
 
 themeBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   const dark = document.body.classList.contains('dark');
+<<<<<<< HEAD
   themeBtn.textContent = dark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+=======
+  themeBtn.textContent = dark ? 'â˜€ï¸' : 'ðŸŒ™';
+>>>>>>> origin/main
   localStorage.setItem('theme', dark ? 'dark' : 'light');
 });
 
